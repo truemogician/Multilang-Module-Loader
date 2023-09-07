@@ -3,7 +3,7 @@ import Path from "path";
 import packageInfo from "../package.json";
 
 const licenseTemplate = FileSystem
-	.readFileSync(Path.join(__dirname, "../LICENSE.template"))
+	.readFileSync(Path.join(__dirname, "../template/LICENSE.template"))
 	.toString("utf-8");
 const license = licenseTemplate
 	.replace("{{current_year}}", new Date().getFullYear().toString())

@@ -1,6 +1,6 @@
 {
 	"name": "multilang-module-loader",
-	"version": "1.0.0",
+	"version": "1.0.2",
 	"description": "A utility library that helps loading modules dynamically in multiple languages, including JSON, YAML, JavaScript and TypeScript.",
 	"main": "lib/index.js",
 	"types": "lib/index.d.ts",
