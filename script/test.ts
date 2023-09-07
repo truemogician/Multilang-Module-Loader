@@ -1,10 +1,16 @@
-import Path from "path";
 import loadModule from "../dist";
 
-console.log("Using webpack.config.ts as test module...");
-loadModule(Path.resolve(__dirname, "../webpack.config.ts"))
-	.then(config => {
-		console.log("TypeScript module loaded successfully!");
-		console.log(config);
-	})
-	.catch(err => console.error(err));
+const testModule = {
+	path: __filename,
+	sayHello: () => console.log("TypeScript module loaded successfully!"),
+	loadModule
+};
+
+export default testModule;
+
+console.log("Using the test script itself as a module to test TypeScript module loading.");
+loadModule<typeof testModule>(__filename)
+	.then(module => {
+		module.sayHello();
+		console.log(module);
+	}, console.error);
