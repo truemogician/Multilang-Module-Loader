@@ -1,5 +1,3 @@
-import interpret from "interpret";
-import rechoir from "rechoir";
 import AsyncFs from "fs/promises";
 import Path from "path";
 import { pathToFileURL } from "url";
@@ -21,12 +19,13 @@ async function tryRequireThenImport<T = any>(module: string): Promise<T> {
 
 const json5Extensions = [".json5", ".jsonc"];
 const yamlExtensions = [".yaml", ".yml"];
-const jsExtensions = Object.keys(interpret.jsVariants);
 
 export default async function loadModule<T = any>(path: string): Promise<T> {
 	const ext = Path.extname(path);
-	if (jsExtensions.includes(ext)) {
-		rechoir.prepare(interpret.jsVariants, path);
+	const jsVariants = (await import("interpret")).jsVariants
+	if (Object.keys(jsVariants).includes(ext)) {
+		const rechoir = await import("rechoir");
+		rechoir.prepare(jsVariants, path);
 		return await tryRequireThenImport<T>(path);
 	}
 	const content = await AsyncFs.readFile(path, "utf-8");
