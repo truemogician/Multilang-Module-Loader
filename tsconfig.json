@@ -4,7 +4,7 @@
 		"target": "ES2018",
 		"module": "Node16",
 		"rootDir": "./src",
-		"outDir": "./dist",
+		"outDir": "./lib",
 		"declaration": true,
 		"sourceMap": false,
 		"moduleResolution": "Node16",

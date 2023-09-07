@@ -1,4 +1,4 @@
-import loadModule from "../dist";
+import loadModule from "../lib";
 
 const testModule = {
 	path: __filename,

@@ -2,8 +2,8 @@
 	"name": "multilang-module-loader",
 	"version": "1.0.0",
 	"description": "A utility library that helps loading modules dynamically in multiple languages, including JSON, YAML, JavaScript and TypeScript.",
-	"main": "dist/index.js",
-	"types": "dist/index.d.ts",
+	"main": "lib/index.js",
+	"types": "lib/index.d.ts",
 	"scripts": {
 		"test": "ts-node script/test.ts --project tsconfig.json",
 		"build": "tsc --build tsconfig.json"
