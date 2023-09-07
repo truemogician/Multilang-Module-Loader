@@ -6,10 +6,13 @@
 	"types": "lib/index.d.ts",
 	"scripts": {
 		"test": "ts-node script/test.ts --project tsconfig.json",
-		"build": "tsc --build tsconfig.json"
+		"build": "tsc --build tsconfig.json && ts-node script/generate-license.ts"
 	},
 	"keywords": [],
-	"author": "true_mogician",
+	"author": {
+		"name": "true_mogician",
+		"email": "truemogician@gmail.com"
+	},
 	"license": "MIT",
 	"dependencies": {
 		"interpret": "^3.1.1",
