@@ -13,6 +13,7 @@
 	"license": "MIT",
 	"dependencies": {
 		"interpret": "^3.1.1",
+		"json5": "^2.2.3",
 		"rechoir": "^0.8.0",
 		"yaml": "^2.3.2"
 	},

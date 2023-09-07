@@ -19,22 +19,26 @@ async function tryRequireThenImport<T = any>(module: string): Promise<T> {
 	return result || {};
 }
 
-const jsonExtensions = [".json", ".jsonc", ".json5"];
+const json5Extensions = [".json5", ".jsonc"];
 const yamlExtensions = [".yaml", ".yml"];
+const jsExtensions = Object.keys(interpret.jsVariants);
 
 export default async function loadModule<T = any>(path: string): Promise<T> {
 	const ext = Path.extname(path);
-	if (jsonExtensions.includes(ext)) {
-		const content = await AsyncFs.readFile(path, "utf-8");
+	if (jsExtensions.includes(ext)) {
+		rechoir.prepare(interpret.jsVariants, path);
+		return await tryRequireThenImport<T>(path);
+	}
+	const content = await AsyncFs.readFile(path, "utf-8");
+	if (ext == ".json")
 		return JSON.parse(content);
+	if (json5Extensions.includes(ext)) {
+		const JSON5 = await import("json5");
+		return JSON5.parse(content);
 	}
 	if (yamlExtensions.includes(ext)) {
-		const content = await AsyncFs.readFile(path, "utf-8");
 		const YAML = await import("yaml");
 		return YAML.parse(content);
 	}
-	if (!Object.keys(interpret.jsVariants).includes(ext))
-		throw new Error(`Unsupported file type: ${ext}`);
-	rechoir.prepare(interpret.jsVariants, path);
-	return await tryRequireThenImport<T>(path);
+	throw new Error(`Unsupported file type: ${ext}`);
 }
