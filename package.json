@@ -5,6 +5,7 @@
 	"main": "dist/index.js",
 	"types": "dist/index.d.ts",
 	"scripts": {
+		"test": "ts-node script/test.ts --project tsconfig.json",
 		"build": "webpack --config webpack.config.ts"
 	},
 	"keywords": [],
