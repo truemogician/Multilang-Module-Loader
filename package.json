@@ -6,14 +6,24 @@
 	"types": "lib/index.d.ts",
 	"scripts": {
 		"test": "ts-node script/test.ts --project tsconfig.json",
-		"build": "tsc --build tsconfig.json && ts-node script/generate-license.ts"
+		"build": "tsc --build tsconfig.json && ts-node script/generate-license.ts",
+		"prepublishOnly": "pnpm run build"
 	},
-	"keywords": [],
+	"keywords": [
+		"module-loader",
+		"javascript",
+		"typescript"
+	],
 	"author": {
 		"name": "true_mogician",
 		"email": "truemogician@gmail.com"
 	},
 	"license": "MIT",
+	"homepage": "https://github.com/truemogician/Multilang-Module-Loader",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/truemogician/Multilang-Module-Loader"
+	},
 	"dependencies": {
 		"interpret": "^3.1.1",
 		"json5": "^2.2.3",
